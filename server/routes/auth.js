@@ -30,15 +30,15 @@ passport.use(new TwitterStrategy({
     },
     function(token, tokenSecret, profile, done) {
         console.log('User found: ', profile.username);
-        return done(error, profile);
+        return done(null, profile);
     }
 ));
 
 passport.serializeUser((user, callback) => {
-    callback(error, user);
+    callback(null, user);
 });
 passport.deserializeUser((user, callback) => {
-    callback(error, user);
+    callback(null, user);
 });
 
 
@@ -47,12 +47,11 @@ router.get('/twitter/login', passport.authenticate('twitter'), (req, res) => {
     return res.redirect('/');
 });
 
-
-router.get( '/twitter/callback', 
-            passport.authenticate('twitter', {
-                failureMessage: 'Could not authenticate user'
-            }));
-
+router.get('/twitter/callback', 
+    passport.authenticate('twitter', { failureRedirect: '/' }),
+    (req, res) => {
+        res.json('Boooooyahh succeeeeess')
+    });
 
 
 module.exports = router;
