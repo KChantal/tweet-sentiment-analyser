@@ -3,17 +3,17 @@ const path = require('path');
 module.exports = {
     entry: './client/index.js',
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.join(__dirname, 'build'),
         filename: 'bundle.js'
     },
-    mode: "development",
+    mode: 'development',
     devServer: {
-      contentBase: './client',
-      hot: true,  
-      writeToDisk: true,
-      publicPath: '/',
-      proxy: {
-          '/api': 'http://localhost:3000'
+      contentBase: path.join(__dirname, 'build'),
+      // writeToDisk: true,
+      publicPath: '/build/',
+      port: 8080,
+      proxy: { 
+        '/api': 'http://localhost:3000'
       }
     },
     resolve: {

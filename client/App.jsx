@@ -9,29 +9,24 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
-        }
-        loggedIn = false;
+            loggedIn: false
+        };
     }
 
     render() {
-        const loginComponent = (<div>
-                                    <Login />
-                                </div>);
+        console.log(this.state);
 
-        if (!this.loggedIn) {
+        if (this.state.loggedIn === false) {
             return (
                 <div className="mainBox">
                     <h1>Hi, I'm the React app</h1>
-                    
-                    {loginComponent}
+                    <Login />
                 </div>    
             )
         }
         return (
             <div className="mainBox">
                 <h1>Welcome, you are now logged in!</h1>
-
                 <Main />
             </div>
 

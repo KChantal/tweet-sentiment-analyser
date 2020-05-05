@@ -2,17 +2,19 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = 3000;
+const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth');
 
 app.use(express.json());
+app.use(cookieParser());
 
 // Handle static files
 // app.use('/assets', express.static(path.resolve(__dirname, '../client')));
 
-// app.use('/', authRouter);
+app.use('/api', authRouter);
 
 
-
+console.log('process.env.NODE_ENV = ', process.env.NODE_ENV);
 
 // If we are in production mode, serve files here
 // if (process.env.NODE_ENV === 'production') {
