@@ -14,15 +14,19 @@ app.use(cookieParser());
 app.use('/api', authRouter);
 
 
-console.log('process.env.NODE_ENV = ', process.env.NODE_ENV);
-
 // If we are in production mode, serve files here
 // if (process.env.NODE_ENV === 'production') {
-    app.use('/build', express.static(path.join(__dirname, '../build')));
+app.use('/build', express.static(path.join(__dirname, '../build')));
 
-    app.get('/', (req, res) => {
-        return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
-    });
+app.get('/', (req, res) => {
+    return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+});
+
+app.get('/main', (req, res) => {
+    return res.status(200)
+                .sendFile(path.join(__dirname, '../client/index.html'));
+});
+
 // }
 
 // Default status of 404 sent if any non-handled route is entered

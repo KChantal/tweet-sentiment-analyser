@@ -12,6 +12,9 @@ const session = require('cookie-session');
 //     access_token_key: '1001060235681857536-Inm3ZLLoktAfghEuBErIfVqZluT9x0',
 //     access_token_secret: 'eX5SHrzqmuQiJzixBcsKtFLPTkXtPtklO9pbEhkd8zxYA'
 // });
+let userInfo = {
+
+}
 
 router.use(session({ 
     secret: 'someGenericSecret', 
@@ -30,6 +33,7 @@ passport.use(new TwitterStrategy({
     },
     function(token, tokenSecret, profile, done) {
         console.log('User found: ', profile.username);
+        userInfo.username = profile.username;
         return done(null, profile);
     }
 ));
@@ -49,8 +53,18 @@ router.get('/twitter/login', passport.authenticate('twitter'), (req, res) => {
 
 router.get('/twitter/callback', 
     passport.authenticate('twitter', { failureRedirect: '/' }),
-    (req, res) => {
-        res.json('Boooooyahh succeeeeess')
+    (req, res, next) => {
+        try {
+            res.cookie('loggedInStatus', 'yes', { httpOnly: false, maxAge: 900000 });
+            res.cookie('username', userInfo.username, { httpOnly: false, maxAge: 900000 });
+            console.log('Cookie created');    
+            res.redirect('/main');
+
+        } catch(error) {
+            return next({
+                err: `Your error was: ${error}`
+            });
+        }
     });
 
 

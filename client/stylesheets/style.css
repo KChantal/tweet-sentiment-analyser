@@ -12,15 +12,16 @@ body {
 }
 
 .mainBox {
-    width: 45%;
-    height: 30vh;
+    width: 50%;
+    height: 40vh;
     margin: 0 auto;
     padding: 3em;
     float: center;
     text-align: center;
     background-color: azure;
-    border: solid 1px teal;
+    border: solid 1px dodgerblue;
     font-weight: 400;
+    box-shadow: 10px 10px 10px lightslategrey;
 }
 
 .login-box {
@@ -32,7 +33,6 @@ body {
 #twitter-login-btn {
     display: flex;
     justify-content: center;
-
     height: 3.5em;
     width: 15em;
     background-color: #55ACEE;
@@ -44,8 +44,56 @@ body {
 span {
     margin: 0.5em;
     margin-left: 1.2em;
+    margin-right: 1em;
 }
 
 .submit-term-div {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#username {
+    color: dodgerblue;
+}
+
+#twitter-search-term {
+    width: 20em;
+    height: 3em;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid slategrey;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    transition: ease, width 1s ease;
+    box-shadow: 1px 2px 1px dimgray;
+}
+
+#twitter-search-term:focus, textarea:focus {
+    width: 25em;
+    transition: ease, width 1s ease;
+    border: none;
+    outline: none;
+}
+
+#search-twitter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.2em;
+    width: 14em;
+    background-color: #55ACEE;
+    color: whitesmoke;
+    border-radius: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    box-shadow: 3px 3px 1px dimgray;
+    border: none;
+    outline: none;
+}
+
+#search-twitter-btn:hover {
+    color: white;
+    background-color: steelblue;
 }

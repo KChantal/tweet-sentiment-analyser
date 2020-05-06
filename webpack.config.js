@@ -8,12 +8,13 @@ module.exports = {
     },
     mode: 'development',
     devServer: {
-      contentBase: path.join(__dirname, 'build'),
-      // writeToDisk: true,
-      publicPath: '/build/',
+      publicPath: '/',
+      contentBase: '../client/index.html',
+      hot: true,
+      writeToDisk: true,
       port: 8080,
       proxy: { 
-        '/api': 'http://localhost:3000'
+        '/': 'http://localhost:3000'
       }
     },
     resolve: {
@@ -37,5 +38,8 @@ module.exports = {
           use: ['style-loader', 'css-loader', 'sass-loader']
         }
       ]
-    }
+    },
+    // plugins: [
+    //   new webpack.HotModuleReplacementPlugin()
+    // ]
 }
