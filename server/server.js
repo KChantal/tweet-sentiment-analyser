@@ -4,12 +4,15 @@ const path = require('path');
 const PORT = 3000;
 const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth');
+const searchRouter = require('./routes/search');
 
 app.use(express.json());
 app.use(cookieParser());
 
 // Handle static files
 // app.use('/assets', express.static(path.resolve(__dirname, '../client')));
+
+app.use('/api/search', searchRouter);
 
 app.use('/api', authRouter);
 

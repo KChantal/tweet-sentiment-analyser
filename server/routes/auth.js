@@ -12,9 +12,7 @@ const session = require('cookie-session');
 //     access_token_key: '1001060235681857536-Inm3ZLLoktAfghEuBErIfVqZluT9x0',
 //     access_token_secret: 'eX5SHrzqmuQiJzixBcsKtFLPTkXtPtklO9pbEhkd8zxYA'
 // });
-let userInfo = {
-
-}
+let userInfo = { }
 
 router.use(session({ 
     secret: 'someGenericSecret', 
@@ -32,8 +30,10 @@ passport.use(new TwitterStrategy({
     proxy: true
     },
     function(token, tokenSecret, profile, done) {
-        console.log('User found: ', profile.username);
         userInfo.username = profile.username;
+        userInfo.realName = profile.displayName;
+        userInfo.profilePic = profile.photos[0].value;
+        console.log(userInfo);
         return done(null, profile);
     }
 ));

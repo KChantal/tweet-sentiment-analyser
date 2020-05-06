@@ -18,6 +18,7 @@
   "author": "Kim Wysocki",
   "license": "ISC",
   "dependencies": {
+    "@emotion/core": "^10.0.28",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
@@ -30,12 +31,15 @@
     "nodemon": "^2.0.3",
     "passport": "^0.4.1",
     "passport-twitter": "^1.0.4",
+    "pg": "^8.0.3",
     "react": "^16.13.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
+    "react-pure-loaders": "^3.0.1",
     "react-router-dom": "^5.1.2",
     "sentiment": "^5.0.2",
+    "three-dots": "^0.2.0",
     "twit": "^2.2.11",
     "twitter": "^1.7.1"
   },

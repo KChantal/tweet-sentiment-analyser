@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 // }
 
 const Login = (props) => {
-    console.log(props);
     return(
         <div className="login-box">
             <h4>Please log into Twitter first</h4> 

@@ -18,10 +18,17 @@ body {
     padding: 3em;
     float: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: azure;
     border: solid 1px dodgerblue;
     font-weight: 400;
     box-shadow: 10px 10px 10px lightslategrey;
+}
+
+.loading-comp {
+    
 }
 
 .login-box {
@@ -41,6 +48,12 @@ body {
     font-size: 1rem;
     font-weight: 600;
 }
+
+#twitter-login-btn:hover {
+    color: white;
+    background-color: steelblue;
+}
+
 span {
     margin: 0.5em;
     margin-left: 1.2em;
@@ -55,6 +68,11 @@ span {
 
 #username {
     color: dodgerblue;
+    margin: auto;
+}
+
+.info-p {
+    color: dimgray;
 }
 
 #twitter-search-term {
