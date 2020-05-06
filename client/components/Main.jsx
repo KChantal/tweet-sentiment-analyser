@@ -31,6 +31,10 @@ class Main extends Component {
         if (isLoggedIn === 'yes') {
             this.setState({loggedIn: true});
         }
+        if (this.state.searchTerm) {
+            this.setState({ loading: true });
+            window.location.href = '/api/search/search';
+        }
     }
 
     render() {

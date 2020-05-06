@@ -27,10 +27,6 @@ body {
     box-shadow: 10px 10px 10px lightslategrey;
 }
 
-.loading-comp {
-    
-}
-
 .login-box {
     display: flex;
     flex-direction: column;

@@ -58,7 +58,7 @@ router.get('/twitter/callback',
             res.cookie('loggedInStatus', 'yes', { httpOnly: false, maxAge: 900000 });
             res.cookie('username', userInfo.username, { httpOnly: false, maxAge: 900000 });
             console.log('Cookie created');    
-            res.redirect('/main');
+            res.redirect('/');
 
         } catch(error) {
             return next({

@@ -2,13 +2,15 @@ import React, { Component, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 
-
 const MainPage = (props) => {
     const handleSearch = (e) => {
         let input = e.target.parentNode.querySelector("input").value;
-        Cookies.set('searchTerm', input);
+        input = input.split(" ").join("");
+        console.log(input);
+        
+        Cookies.set('searchTerm', input, { expires: 1/1000 });
         // e.target.parentNode.querySelector("input").value = null;
-        window.location.href = '/api/search/search';
+        window.location.href = '/';
     }
 
     return(

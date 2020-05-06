@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const authRouter = require('./routes/auth');
 const searchRouter = require('./routes/search');
 
+app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(cookieParser());
 
@@ -13,7 +14,6 @@ app.use(cookieParser());
 // app.use('/assets', express.static(path.resolve(__dirname, '../client')));
 
 app.use('/api/search', searchRouter);
-
 app.use('/api', authRouter);
 
 
