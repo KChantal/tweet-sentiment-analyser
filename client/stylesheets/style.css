@@ -1,8 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 body {
-    background-color: cadetblue;
+    background-color: papayawhip;
+    font-family: 'Questrial', sans-serif;
+    text-align: center;
+}
+
+#initial-header {
+    font-weight: 700;
 }
 
 .mainBox {
+    width: 45%;
+    height: 30vh;
+    margin: 0 auto;
+    padding: 3em;
+    float: center;
+    text-align: center;
     background-color: azure;
     border: solid 1px teal;
+    font-weight: 400;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#twitter-login-btn {
+    display: flex;
+    justify-content: center;
+
+    height: 3.5em;
+    width: 15em;
+    background-color: #55ACEE;
+    color: whitesmoke;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+span {
+    margin: 0.5em;
+    margin-left: 1.2em;
+}
+
+.submit-term-div {
+    display: flex;
 }
