@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 const Login = (props) => {
     return(
         <div className="login-box">
-            <h4>Please log into Twitter first</h4> 
+            <h4>Please log in via Twitter first</h4> 
 
             <button onClick={() => window.location.href='/api/twitter/login'} 
                     onSubmit={props.toggleLoggedInTrue}

@@ -69,6 +69,7 @@ span {
 
 .info-p {
     color: dimgray;
+    line-height: 20px;
 }
 
 #twitter-search-term {
@@ -114,6 +115,36 @@ span {
 
 .resultsBox {
     width: 65%;
-    height: 60vh;
+    height: 75vh;
     box-shadow: 20px 20px 20px dimgray;
+}
+
+ul {
+    margin-left: -4em;
+    text-align: center;
+    list-style-position: inside;
+    font-weight: 100;
+    font-size: 18px;
+}
+.positive {
+    color: dodgerblue;
+}
+.negative {
+    color: firebrick;
+}
+
+#d3Graph {
+    margin-top: 0%;
+}
+
+svg {
+    /* background-color: palegreen; */
+    width: 120%;
+    height: 120%;
+}
+
+circle {
+    stroke: #000;
+    background-color: dodgerblue;
+    color: dodgerblue;
 }

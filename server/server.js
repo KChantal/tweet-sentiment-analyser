@@ -30,6 +30,11 @@ app.get('/main', (req, res) => {
                 .sendFile(path.join(__dirname, '../client/index.html'));
 });
 
+app.get('/results', (req, res) => {
+    return res.status(200)
+                .sendFile(path.join(__dirname, '../client/index.html'));
+});
+
 // }
 
 // Default status of 404 sent if any non-handled route is entered

@@ -17,7 +17,9 @@ class Main extends Component {
             searchTerm: Cookies.get('searchTerm'),
             loading: true,
             dataFound: Cookies.get('hasResults'),
-            sentimentResults: Cookies.get('results')
+            sentimentData: Cookies.get('sentimentData'),
+            words: Cookies.get('words'),
+            resultsIn: false,
         };
         this.toggleLoggedInTrue = this.toggleLoggedInTrue.bind(this);
     }
@@ -27,10 +29,15 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        console.log('All visible cookies: ', this.state.cookies);
-        console.log(this.state.searchTerm);
-        
+        // console.log('All visible cookies: ', this.state.cookies);
+
+        // console.log('this.state.sentimentData: ', this.state.sentimentData);
+        // console.log('this.state.words: ', this.state.words);
+        // console.log('dataFound: ', this.state.dataFound);
+
+
         const isLoggedIn = Cookies.get('loggedInStatus');
+
         if (isLoggedIn === 'yes') {
             this.setState({loggedIn: true});
         }
@@ -38,25 +45,37 @@ class Main extends Component {
             this.setState({ loading: true });
             window.location.href = '/api/search/search';
         }
+        // if results returned and haven't already been processed
+        if (this.state.dataFound && !this.state.resultsIn) {
+            console.log('Yay data has been found');
+            this.setState({ resultsIn: true });
+        }
     }
 
     render() {
-        
-
+        // On first render - prompt user to log in 
         if (this.state.loggedIn === false) {
             return (
                 <div className="mainBox">
                     <Login />
                 </div>    
             )
-        } else if (this.state.loggedIn === true && !this.state.searchTerm && this.state.dataFound) {
+        } 
+        
+        // if results come in, re-render with analysis results component
+        else if (this.state.loggedIn === true && !this.state.searchTerm && this.state.dataFound) {
             return (
                 <div className="mainBox resultsBox">
 
-                    <AnalysisResults />
+                    <AnalysisResults 
+                        sentimentData={this.state.sentimentData}
+                        words={this.state.words}
+                    />
                 </div>
             )
         }  
+
+
         else if (this.state.loggedIn === true && !this.state.searchTerm) {
             return (
                 <div className="mainBox">

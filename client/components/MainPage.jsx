@@ -17,8 +17,9 @@ const MainPage = (props) => {
         <div>
             <h3>Enter a word or phrase to search for on Twitter</h3>
 
-            <p className="info-p">When you enter your search term, the app will search it on Twitter,
-                and return the results to you.
+            <p className="info-p">After you enter your search term, the app will search on Twitter
+                            for posts containing your word/phrase, analysing the sentiment of each
+                            post, and returning the results to you.
             </p>
 
             <div className="submit-term-div">

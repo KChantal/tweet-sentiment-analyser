@@ -211,8 +211,8 @@ twitterSearchController.sentimentAnalysis = (req, res, next) => {
 
 
         res.locals.wordArrays = {
-            positiveWords: mostFreqPositive,
-            negativeWords: mostFreqNegative
+            positiveWords: JSON.stringify(mostFreqPositive),
+            negativeWords: JSON.stringify(mostFreqNegative)
         }
         res.locals.sentimentData = scoresAndTimes;
 
