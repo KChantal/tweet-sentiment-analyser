@@ -33,7 +33,7 @@ passport.use(new TwitterStrategy({
         userInfo.username = profile.username;
         userInfo.realName = profile.displayName;
         userInfo.profilePic = profile.photos[0].value;
-        console.log(userInfo);
+        // console.log(userInfo);
         return done(null, profile);
     }
 ));
@@ -56,8 +56,7 @@ router.get('/twitter/callback',
     (req, res, next) => {
         try {
             res.cookie('loggedInStatus', 'yes', { httpOnly: false, maxAge: 900000 });
-            res.cookie('username', userInfo.username, { httpOnly: false, maxAge: 900000 });
-            console.log('Cookie created');    
+            res.cookie('username', userInfo.username, { httpOnly: false, maxAge: 900000 });   
             res.redirect('/');
 
         } catch(error) {
