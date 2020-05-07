@@ -11,7 +11,10 @@ router.get('/search',
     twitterSearchController.sentimentAnalysis, 
     (req, res) => {
         console.log('Success in \'getSearchTerm\'');
-        return res.status(200).json(res.locals.analysis); 
+        res.clearCookie("searchTerm");
+        res.cookie("hasResults", true, { httpOnly: false, maxAge: 900000 })
+        res.status(200);
+        return res.redirect('/main');
 });
 
 

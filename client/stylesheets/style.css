@@ -111,3 +111,9 @@ span {
     color: white;
     background-color: steelblue;
 }
+
+.resultsBox {
+    width: 65%;
+    height: 60vh;
+    box-shadow: 20px 20px 20px dimgray;
+}

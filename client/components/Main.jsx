@@ -3,6 +3,7 @@ import { BallPulse, BallSpinFadeLoader,  BallZigZagDeflect } from 'react-pure-lo
 import Cookies from 'js-cookie';
 import MainPage from '../components/MainPage';
 import Login from '../components/Login';
+import AnalysisResults from '../components/AnalysisResults';
 
 import '../stylesheets/style.css';
 
@@ -14,7 +15,9 @@ class Main extends Component {
             cookies: Cookies.get(),
             loggedIn: false,
             searchTerm: Cookies.get('searchTerm'),
-            loading: true
+            loading: true,
+            dataFound: Cookies.get('hasResults'),
+            sentimentResults: Cookies.get('results')
         };
         this.toggleLoggedInTrue = this.toggleLoggedInTrue.bind(this);
     }
@@ -46,7 +49,15 @@ class Main extends Component {
                     <Login />
                 </div>    
             )
-        } else if (this.state.loggedIn === true && !this.state.searchTerm) {
+        } else if (this.state.loggedIn === true && !this.state.searchTerm && this.state.dataFound) {
+            return (
+                <div className="mainBox resultsBox">
+
+                    <AnalysisResults />
+                </div>
+            )
+        }  
+        else if (this.state.loggedIn === true && !this.state.searchTerm) {
             return (
                 <div className="mainBox">
                     <h2>Welcome, <span id="username">{this.state.cookies.username}</span>!</h2>
@@ -55,7 +66,7 @@ class Main extends Component {
                 </div>
             )
         }  
-        else if (this.state.loggedIn === true && this.state.cookies.searchTerm !== null && !this.state.dataFound) {
+        else if (this.state.loggedIn === true && this.state.searchTerm !== null && !this.state.dataFound) {
             return (
                 <div className="mainBox">
                     <h2>Just a moment while we search Twitter</h2>
