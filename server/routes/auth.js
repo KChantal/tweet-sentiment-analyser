@@ -45,8 +45,6 @@ passport.deserializeUser((user, callback) => {
     callback(null, user);
 });
 
-
-
 router.get('/twitter/login', passport.authenticate('twitter'), (req, res) => {
     return res.redirect('/');
 });
