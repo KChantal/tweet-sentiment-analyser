@@ -1,3 +1,4 @@
+// Contains consumer key and access token information from Twitter API
 // Set up access to Twitter via Twit library
 const T = new Twit({
 	consumer_key: "GGYozqZxAX7pgoFfOjunWA7XJ",
