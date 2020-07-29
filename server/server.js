@@ -32,7 +32,7 @@ app.get("/results", (req, res) => {
 // }
 
 // Default status of 404 sent if any non-handled route is entered
-// app.use((req, res) => res.sendStatus(404));
+app.use((req, res) => res.sendStatus(404));
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
