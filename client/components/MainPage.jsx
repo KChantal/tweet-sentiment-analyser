@@ -1,38 +1,47 @@
-import React, { Component, useEffect } from 'react';
-import Cookies from 'js-cookie';
-
+import React, { Component, useEffect, useState, useRef } from "react";
+import Cookies from "js-cookie";
 
 const MainPage = (props) => {
-    const handleSearch = (e) => {
-        let input = e.target.parentNode.querySelector("input").value;
-        input = input.split(" ").join("");
-        console.log(input);
-        
-        Cookies.set('searchTerm', input, { expires: 1/1000 });
-        // e.target.parentNode.querySelector("input").value = null;
-        window.location.href = '/';
-    }
+  const [searchTerm, setSearchTerm] = useState("");
+  const searchTermRef = useRef(searchTerm);
 
-    return(
-        <div>
-            <h3>Enter a word or phrase to search for on Twitter</h3>
+  const handleSearch = (e) => {
+    searchTermRef.current = e.target.value;
+    console.log(searchTermRef.current);
+  };
 
-            <p className="info-p">After you enter your search term, the app will search on Twitter
-                            for posts containing your word/phrase, analysing the sentiment of each
-                            post, and returning the results to you.
-            </p>
+  const handleClick = (e) => {
+    searchTermRef.current = searchTermRef.current.split(" ").join("");
+    console.log("searchTermRef: ", searchTermRef.current);
 
-            <div className="submit-term-div">
-                <input id="twitter-search-term" placeholder="Enter your word or phrase here...."></input>
-                <button id="search-twitter-btn"
-                        onClick={handleSearch}
-                        type="button">
-                            <span>Search For Tweets</span>
-                            <i className="fa fa-twitter fa-lg"></i>
-                </button> 
-            </div>
-        </div>
-    )
-}
+    Cookies.set("searchTerm", searchTermRef.current, { expires: 1 / 1000 });
+    // e.target.parentNode.querySelector("input").value = null;
+    window.location.href = "/";
+  };
+
+  return (
+    <div>
+      <h3>Enter a word or phrase to search for on Twitter</h3>
+
+      <p className="info-p">
+        After you enter your search term, the app will search on Twitter for
+        posts containing your word/phrase, analysing the sentiment of each post,
+        and returning the results to you.
+      </p>
+
+      <div className="submit-term-div">
+        <input
+          id="twitter-search-term"
+          placeholder="Enter your word or phrase here...."
+          onChange={handleSearch}
+        ></input>
+        <button id="search-twitter-btn" onClick={handleClick} type="button">
+          <span>Search For Tweets</span>
+          <i className="fa fa-twitter fa-lg"></i>
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default MainPage;
