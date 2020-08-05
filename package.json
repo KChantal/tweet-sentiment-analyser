@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "build": "NODE_ENV=production webpack & NODE_ENV=production npm start",
-    "dev": "concurrently \"NODE_ENV=development webpack-dev-server --open\" \"nodemon ./server/server.js\""
+    "dev": "concurrently \"NODE_ENV=development webpack-dev-server --open\" \"nodemon ./server/server.js\"",
+    "test": "jest --verbose --detectOpenHandles"
   },
   "nodemonConfig": {
     "ignore": [
@@ -28,6 +29,7 @@
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "jest": "^26.2.2",
     "js-cookie": "^2.2.1",
     "mongoose": "^5.9.11",
     "node-fetch": "^2.6.0",
@@ -42,6 +44,7 @@
     "react-pure-loaders": "^3.0.1",
     "react-router-dom": "^5.1.2",
     "sentiment": "^5.0.2",
+    "supertest": "^4.0.2",
     "three-dots": "^0.2.0",
     "twit": "^2.2.11",
     "twitter": "^1.7.1"

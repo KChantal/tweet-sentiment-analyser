@@ -7,4 +7,4 @@ build/
 
 package-lock.json
 
-private/secrets.js
+server/private/

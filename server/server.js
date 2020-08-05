@@ -37,3 +37,5 @@ app.use((req, res) => res.sendStatus(404));
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });
+
+module.exports = app;
