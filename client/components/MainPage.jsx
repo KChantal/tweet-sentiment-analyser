@@ -7,15 +7,12 @@ const MainPage = (props) => {
 
   const handleSearch = (e) => {
     searchTermRef.current = e.target.value;
-    console.log(searchTermRef.current);
   };
 
   const handleClick = (e) => {
     searchTermRef.current = searchTermRef.current.split(" ").join("");
-    console.log("searchTermRef: ", searchTermRef.current);
 
     Cookies.set("searchTerm", searchTermRef.current, { expires: 1 / 1000 });
-    // e.target.parentNode.querySelector("input").value = null;
     window.location.href = "/";
   };
 
