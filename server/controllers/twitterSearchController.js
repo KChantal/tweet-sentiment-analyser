@@ -23,7 +23,7 @@ month < 10 && day < 10
   ? (today = `${year}-${month}-0${day}`)
   : (today = `${year}-${month}-${day}`);
 
-console.log(today);
+// console.log(today);
 
 // const str = "Wow, happy nice lovely wonderful amazing love love love like";
 // console.log(sentiment.analyze(str));
@@ -44,12 +44,9 @@ twitterSearchController = {};
 
 twitterSearchController.getSearchTerm = async (req, res, next) => {
   try {
-    console.log("Inside tSC.geSearchTerm");
-    console.log(req.cookies.searchTerm);
     res.locals.searchPhrase = `#${req.cookies.searchTerm}`;
     return next();
   } catch (err) {
-    console.log(err);
     return next({
       error: `You received the following error: ${err}`,
     });
@@ -58,15 +55,11 @@ twitterSearchController.getSearchTerm = async (req, res, next) => {
 
 twitterSearchController.searchTweets = async (req, res, next) => {
   try {
-    console.log("Inside searchTweets");
-    console.log("res.locals.searchPhrase", res.locals.searchPhrase);
-
     // Get tweets from each day over the past 7 days
-    // maybe turn this into Promise.all ??
 
     const tweetPromiseArray = [];
 
-    // since:2020-04-01
+    // since:2020-08-01
 
     for (let i = 1; i < 9; i++) {
       tweetPromiseArray.push(
@@ -97,7 +90,6 @@ twitterSearchController.searchTweets = async (req, res, next) => {
 
     return next();
   } catch (err) {
-    console.log(err);
     return next({
       error: `You received the following error: ${err}`,
     });
@@ -159,7 +151,6 @@ twitterSearchController.sentimentAnalysis = (req, res, next) => {
       // keep the original arrays together and in the same order, so group the data
       justTextAndDates.push(dayArray);
     }
-    // console.log(justTextAndDates);
 
     // for each array, push the date into scoresAndTimes array
     justTextAndDates.forEach((arr) => {
@@ -189,18 +180,15 @@ twitterSearchController.sentimentAnalysis = (req, res, next) => {
           return acc;
         }
       }, 0);
-      console.log(averageScore);
       scoresAndTimes[count].avgScore = averageScore;
       count++;
     });
 
-    console.log(scoresAndTimes);
-
     const mostFreqPositive = findWordMode(positiveWordsArr);
     const mostFreqNegative = findWordMode(negativeWordsArr);
 
-    console.log("Most frequently occurring positive words: ", mostFreqPositive);
-    console.log("Most frequently occurring negative words: ", mostFreqNegative);
+    // console.log("Most frequently occurring positive words: ", mostFreqPositive);
+    // console.log("Most frequently occurring negative words: ", mostFreqNegative);
 
     res.locals.wordArrays = {
       positiveWords: JSON.stringify(mostFreqPositive),
@@ -210,7 +198,6 @@ twitterSearchController.sentimentAnalysis = (req, res, next) => {
 
     return next();
   } catch (err) {
-    console.log(err);
     return next({
       error: `You received the following error: ${err}`,
     });

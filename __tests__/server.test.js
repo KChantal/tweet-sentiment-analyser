@@ -1,6 +1,6 @@
 const request = require("supertest");
 const app = require("../server/server.js");
-const { default: Item } = require("antd/lib/list/Item");
+// const { default: Item } = require("antd/lib/list/Item");
 
 describe("Endpoint testing", () => {
   describe("GET request to '/", () => {
