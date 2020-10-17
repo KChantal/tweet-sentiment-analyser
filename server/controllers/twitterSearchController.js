@@ -69,7 +69,7 @@ twitterSearchController.searchTweets = async (req, res, next) => {
             {
               q: `${res.locals.searchPhrase}`,
               count: 100,
-              until: `2020-08-0${i}`,
+              until: `2025-11-0${i}`,
             },
             (err, data, response) => {
               const statusInfo = data.statuses;
