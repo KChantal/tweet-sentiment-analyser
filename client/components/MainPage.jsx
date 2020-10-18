@@ -9,6 +9,12 @@ const MainPage = (props) => {
     searchTermRef.current = e.target.value;
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleClick(e);
+    }
+  };
+
   const handleClick = (e) => {
     searchTermRef.current = searchTermRef.current.split(" ").join("");
 
@@ -31,6 +37,7 @@ const MainPage = (props) => {
           id="twitter-search-term"
           placeholder="Enter your word or phrase here...."
           onChange={handleSearch}
+          onKeyPress={handleKeyPress}
         ></input>
         <button id="search-twitter-btn" onClick={handleClick} type="button">
           <span>Search For Tweets</span>
