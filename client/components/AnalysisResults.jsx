@@ -11,7 +11,6 @@ class AnalysisResults extends Component {
 
   componentDidMount() {
     const data = JSON.parse(this.props.sentimentData.slice(2));
-    // console.log(data);
 
     const dateArray = [];
 
